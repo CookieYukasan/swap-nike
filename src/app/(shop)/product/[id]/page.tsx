@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
 }
 
 export async function generateStaticParams() {
-  const data = await fetchWrapper<SneakerProps[]>('/sneakers', { method: 'GET' })
+  const data = await fetchWrapper<SneakerProps[]>('/sneakers', { method: 'GET', cache: 'no-cache' })
 
   return data.map((item) => ({
     id: String(item.id),
