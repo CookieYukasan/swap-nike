@@ -2,7 +2,7 @@
 
 import { LoadingSpinner } from '@/components/LoadingSpinner'
 import { fetchWrapper } from '@/utils/fetchWrapper'
-import formatBalance from '@/utils/formatBalance'
+import formatCurrency from '@/utils/formatCurrency'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as Dialog from '@radix-ui/react-dialog'
 import { ReactNode, useState } from 'react'
@@ -77,7 +77,7 @@ export default function MakeOffer({ children }: { children: ReactNode }) {
               <div className="mt-2 flex items-center justify-between">
                 <p className="text-sm text-red-500">{errors.amount.message}</p>
                 {errors.amount.type === 'too_big' && (
-                  <p className="text-sm text-red-500">Your balance is {formatBalance(userBalance)}</p>
+                  <p className="text-sm text-red-500">Your balance is {formatCurrency(userBalance)}</p>
                 )}
               </div>
             )}

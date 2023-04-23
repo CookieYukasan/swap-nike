@@ -8,6 +8,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { AuctionBanner } from './_components/AuctionBanner'
 import MakeOffer from './_components/MakeOffer'
+import formatCurrency from '@/utils/formatCurrency'
 
 type MetadataProps = {
   params: { id: string }
@@ -59,12 +60,33 @@ export default async function Product({ params }: { params: { id: string } }) {
 
   const userDisplay = buyer ? buyer : author
 
+  const offersAmounts = Array.from({ length: 3 })
+    .map(() => Math.random() * 1000)
+    .sort((a, b) => b - a)
+
   return (
     <>
       {actionRemainingDate && <AuctionBanner auctionRemainingDate={actionRemainingDate} />}
       <main className="container mx-auto mt-8 grid grid-cols-12 gap-6">
         <ImagesGrid images={images} isSold={!isAvailable}>
           <FavoriteButton isFavorite={isFavorite} />
+          <h1 className="my-6 text-3xl font-bold text-[#1D1E20]">Offers Made</h1>
+          <div className="space-y-4">
+            {[0, 1, 2].map((_, i) => (
+              <div className="flex items-center border-y border-[#CFD9DE] py-6" key={i}>
+                <Avatar src={userDisplay.avatar} size={60} alt={`${userDisplay.userName} Avatar`} />
+                <div className="ml-4">
+                  <p className="font-medium text-[#1D1E20]">
+                    <Link href={`/profile/${userDisplay.userName}`}>{userDisplay.userName}</Link>{' '}
+                    <span className="font-normal text-[#7C8089]">offered</span> {formatCurrency(offersAmounts[i])}
+                  </p>
+                  <p className="mt-2 text-[#7C8089]">
+                    Offer expires in <span className="text-[#1D1E20]">19 hours</span>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </ImagesGrid>
         <div className="col-span-5">
           <h1 className="text-3xl font-bold text-[#1D1E20]">{title}</h1>
@@ -106,6 +128,20 @@ export default async function Product({ params }: { params: { id: string } }) {
               <span className="material-symbols-outlined ml-2 !text-2xl text-white">info</span>
             </button>
           )}
+
+          <div className="mt-6">
+            <h1 className="text-xl font-bold text-[#1D1E20]">Product Details</h1>
+            <ul className="ml-6 mt-4 list-disc">
+              <li className="text-[#1D1E20]">Made with at least 20% recycled material by weight.</li>
+              <li className="text-[#1D1E20]">
+                The design features synthetic materials that reflect mid-'80s basketball shoes.
+              </li>
+              <li className="text-[#1D1E20]">
+                The padded collar looks and feels exceptional, while perforations at the tip and sides provide elegance
+                and breathability.
+              </li>
+            </ul>
+          </div>
         </div>
       </main>
     </>
