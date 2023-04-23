@@ -131,14 +131,33 @@ export default async function Product({ params }: { params: { id: string } }) {
 
           <div className="mt-6">
             <h1 className="text-xl font-bold text-[#1D1E20]">Product Details</h1>
-            <ul className="ml-6 mt-4 list-disc">
-              <li className="text-[#1D1E20]">Made with at least 20% recycled material by weight.</li>
-              <li className="text-[#1D1E20]">
-                The design features synthetic materials that reflect mid-'80s basketball shoes.
-              </li>
-              <li className="text-[#1D1E20]">
+            <ul className="ml-6 mt-4 list-disc space-y-2 text-[#1D1E20]">
+              <li>Made with at least 20% recycled material by weight.</li>
+              <li>The design features synthetic materials that reflect mid-'80s basketball shoes.</li>
+              <li>
                 The padded collar looks and feels exceptional, while perforations at the tip and sides provide elegance
                 and breathability.
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-6">
+            <h1 className="text-xl font-bold text-[#1D1E20]">More benefits</h1>
+            <ul className="ml-6 mt-4 list-disc space-y-2 text-[#1D1E20]">
+              <li>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint voluptatum ipsum modi a hic repellat
+                alias expedita, quidem rem dicta distinctio exercitationem. Eveniet dicta ab amet molestias beatae omnis
+                est.
+              </li>
+              <li>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint voluptatum ipsum modi a hic repellat
+                alias expedita, quidem rem dicta distinctio exercitationem.
+              </li>
+              <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
+              <li>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo quisquam molestias modi ex cupiditate sed
+                quae explicabo obcaecati dolorum officiis, dicta accusantium eos atque non, quas, quos nostrum odio
+                minus.
               </li>
             </ul>
           </div>
