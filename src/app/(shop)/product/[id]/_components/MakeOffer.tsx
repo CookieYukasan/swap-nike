@@ -1,10 +1,12 @@
 'use client'
 
+import { LoadingSpinner } from '@/components/LoadingSpinner'
+import { fetchWrapper } from '@/utils/fetchWrapper'
 import formatBalance from '@/utils/formatBalance'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as Dialog from '@radix-ui/react-dialog'
-import { ReactNode } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import { ReactNode, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const userBalance = 92.76
@@ -31,9 +33,19 @@ export default function MakeOffer({ children }: { children: ReactNode }) {
     mode: 'all',
     resolver: zodResolver(schema),
   })
+  const [isLoaded, setIsLoaded] = useState(false)
 
-  const handleMakeOffer = (data: FormProps) => {
-    console.log(data)
+  const handleMakeOffer = async (data: FormProps) => {
+    setIsLoaded(true)
+    try {
+      await fetchWrapper('/offers', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      })
+    } catch (error) {
+      console.log(error)
+    }
+    setIsLoaded(false)
   }
 
   return (
@@ -73,10 +85,10 @@ export default function MakeOffer({ children }: { children: ReactNode }) {
           <div className="flex justify-end">
             <Dialog.Close asChild>
               <button
-                className="w-full rounded bg-black py-4 font-medium text-white"
+                className="flex w-full items-center justify-center rounded bg-black py-4 font-medium text-white"
                 onClick={handleSubmit(handleMakeOffer)}
               >
-                Make offer
+                {isLoaded ? <LoadingSpinner /> : 'Make offer'}
               </button>
             </Dialog.Close>
           </div>
