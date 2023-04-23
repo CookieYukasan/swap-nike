@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { AuctionBanner } from './_components/AuctionBanner'
+import MakeOffer from './_components/MakeOffer'
 
 type MetadataProps = {
   params: { id: string }
@@ -91,10 +92,20 @@ export default async function Product({ params }: { params: { id: string } }) {
               </div>
             ))}
           </div>
-          <button className="mt-6 flex w-full items-center justify-center rounded bg-black py-4 font-medium text-white">
-            {isAvailable ? 'Make offer' : 'Request sales order'}
-            {!isAvailable && <span className="material-symbols-outlined ml-2 !text-2xl text-white">info</span>}
-          </button>
+          {isAvailable && (
+            <MakeOffer>
+              <button className="mt-6 flex w-full items-center justify-center rounded bg-black py-4 font-medium text-white">
+                Make offer
+              </button>
+            </MakeOffer>
+          )}
+
+          {!isAvailable && (
+            <button className="mt-6 flex w-full items-center justify-center rounded bg-black py-4 font-medium text-white">
+              Request sales order
+              <span className="material-symbols-outlined ml-2 !text-2xl text-white">info</span>
+            </button>
+          )}
         </div>
       </main>
     </>
