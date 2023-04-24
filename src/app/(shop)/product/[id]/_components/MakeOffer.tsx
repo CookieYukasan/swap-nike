@@ -48,16 +48,15 @@ export default function MakeOffer({ children }: { children: ReactNode }) {
     setIsLoaded(false)
   }
 
+  // TODO: refactor this code using a modal component
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-70 data-[state=open]:animate-overlayShow" />
-        <Dialog.Content className="fixed left-[50%] top-[50%] max-h-[85vh] w-full max-w-[600px] translate-x-[-50%] translate-y-[-50%] rounded bg-white p-6 focus:outline-none data-[state=open]:animate-contentShow">
+        <Dialog.Content className="fixed left-[50%] top-[50%] max-h-[85vh] w-[95vw] max-w-[600px] translate-x-[-50%] translate-y-[-50%] rounded bg-white p-6 focus:outline-none data-[state=open]:animate-contentShow">
           <Dialog.Title className="text-xl font-bold">Make a offer</Dialog.Title>
-          <Dialog.Description className="mb-5 mt-2 leading-normal">
-            Make offer to the owner of this product
-          </Dialog.Description>
+          <Dialog.Description className="mb-5 mt-2 leading-normal">Make your best offer!</Dialog.Description>
           <form onSubmit={handleSubmit(handleMakeOffer)} className="my-8">
             <label className="text-[#677681]" htmlFor="amount">
               Amount

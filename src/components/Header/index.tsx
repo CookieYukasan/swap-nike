@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { SearchInput } from './SearchInput'
+import { DesktopSearchInput, MobileSearchInput } from './SearchInput'
 
 const headerLinks = [
   { name: 'Explore', href: '/explore' },
@@ -21,7 +21,7 @@ export function Header() {
       </div>
       <header className="border-b border-b-[#CFD9DE] pb-6">
         <div className="container mx-auto mt-5 flex justify-between">
-          <div className="flex flex-col items-center md:flex-row">
+          <div className="flex w-full items-center justify-between md:justify-normal">
             <Link href="/">
               <Image src="/logo.png" alt="logo" width={100} height={100} />
             </Link>
@@ -36,10 +36,14 @@ export function Header() {
                 ))}
               </ul>
             </nav>
+            <div className="flex items-center md:hidden">
+              <MobileSearchInput />
+              <span className="material-symbols-outlined ml-4 cursor-pointer !text-3xl">menu</span>
+            </div>
           </div>
           <div className="mx-auto flex flex-col md:mx-0 md:flex-row">
             <div className="hidden md:block">
-              <SearchInput />
+              <DesktopSearchInput />
             </div>
             <Link href="/signin">
               <button className="hidden h-[56px] w-[200px] rounded bg-black py-4 text-white md:ml-6 md:block">
