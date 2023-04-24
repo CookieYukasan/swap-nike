@@ -55,13 +55,14 @@ export async function generateStaticParams() {
 export default async function Product({ params }: { params: { id: string } }) {
   const { id } = params
 
-  const { images, isFavorite, title, author, sizes, isAvailable, buyer, actionRemainingDate } = await getProduct(id)
+  const { images, isFavorite, title, author, sizes, isAvailable, buyer, actionRemainingDate, soldValue, currentBid } =
+    await getProduct(id)
   if (!images) notFound()
 
   const userDisplay = buyer ? buyer : author
 
   const offersAmounts = Array.from({ length: 3 })
-    .map(() => Math.random() * 1000)
+    .map(() => Math.random() * 10000)
     .sort((a, b) => b - a)
 
   return (
@@ -114,6 +115,20 @@ export default async function Product({ params }: { params: { id: string } }) {
               </div>
             ))}
           </div>
+          {soldValue && !isAvailable && (
+            <div className="mt-6">
+              <p className="mb-2 text-[#7C8089]">was sold by</p>
+              <p className="text-3xl font-medium text-[#1D1E20]">{formatCurrency(soldValue)}</p>
+            </div>
+          )}
+
+          {currentBid && isAvailable && (
+            <div className="mt-6">
+              <p className="mb-2 text-[#7C8089]">Current bid</p>
+              <p className="text-3xl font-medium text-[#1D1E20]">{formatCurrency(offersAmounts[0])}</p>
+            </div>
+          )}
+
           {isAvailable && (
             <MakeOffer>
               <button className="mt-6 flex w-full items-center justify-center rounded bg-black py-4 font-medium text-white">
