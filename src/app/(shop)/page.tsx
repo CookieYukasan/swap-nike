@@ -1,10 +1,10 @@
-import { Avatar } from '@/components/Avatar'
 import { NextHighlightDate } from '@/components/NextHighlightDate'
 import { SneakerCard } from '@/components/SneakerCard'
 import { SneakerProps } from '@/@types'
 import { fetchWrapper } from '@/utils/fetchWrapper'
 import Image from 'next/image'
 import { Metadata } from 'next'
+import { FeedbackSwiper } from './_components/FeedbackSwiper'
 
 export const revalidate = 60
 
@@ -67,8 +67,8 @@ export default async function Home() {
           <SneakerCard key={item.id} data={item} />
         ))}
       </div>
-      <div className="mt-24 hidden grid-cols-12 md:grid">
-        <div className="relative col-span-3">
+      <div className="mt-6 grid-cols-12 md:mt-24 md:grid">
+        <div className="relative col-span-3 hidden md:block">
           <Image src="/symbol.png" width={166} height={93} alt="Nike Symbol" className="absolute -top-12" />
           <Image
             src="https://source.unsplash.com/lJ7iAZxplpc"
@@ -86,26 +86,17 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className="relative col-span-6 mx-8">
+        <div className="col-span-6 md:mx-8">
           <h1 className="mb-4 text-3xl font-bold text-[#1D1E20]">Feedback</h1>
-          <div className="flex items-center">
-            <Avatar src="https://source.unsplash.com/vFOxv-8mONw" size={60} alt="User Photo" />
-            <p className="ml-4 font-medium text-[#1D1E20]">Bruce Orozco</p>
-          </div>
-          <p className="mt-4 text-[#1D1E20]">
-            So far I've had nothing but positives experiences with Nike and their sneakers, they're always well built
-            and last me quite a few years. The only downside is they tend to be a bit pricey. But as I'm a really big
-            fan of the brand and everything they stand for I'll continue to support them with my purchase decisions.
-            <br />
-            <br />
-            But thanks to Swap nike I can change my shoes without having to buy a new one.
-          </p>
-          <div className="absolute bottom-0 right-0 space-x-6">
-            <span className="material-symbols-outlined cursor-pointer !text-3xl">arrow_back_ios</span>
-            <span className="material-symbols-outlined cursor-pointer !text-3xl">arrow_forward_ios</span>
-          </div>
+          <FeedbackSwiper />
         </div>
-        <Image src="/visual-arts-nike.png" width={312} height={440} alt="Illustration Art" className="col-span-3 " />
+        <Image
+          src="/visual-arts-nike.png"
+          width={312}
+          height={440}
+          alt="Illustration Art"
+          className="col-span-3 hidden md:block"
+        />
       </div>
       <div className="mt-8">
         <h1 className="text-3xl font-bold text-[#1D1E20]">Exchanges available</h1>
