@@ -30,3 +30,13 @@
 .fill-icon {
   font-variation-settings: 'FILL' 1;
 }
+
+.container {
+  @apply px-4;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    @apply px-0;
+  }
+}

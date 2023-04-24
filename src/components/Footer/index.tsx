@@ -41,26 +41,26 @@ export function Footer() {
   return (
     <footer className="mt-24 w-full bg-[#111]">
       <div className="container mx-auto pb-8 pt-6">
-        <div className="flex justify-between">
+        <div className="flex flex-col justify-between md:flex-row">
           <div className="flex space-x-12">
             {footerCategoriesLinks.map((item) => (
               <div key={item.title} className="space-y-4">
                 <h1 className="font-medium text-white">{item.title}</h1>
 
                 {item.links.map((link) => (
-                  <p className="text-sm text-[#7E7E7E]" key={link.label}>
+                  <Link href={link.href} className="block text-sm text-[#7E7E7E]" key={link.label}>
                     {link.label}
-                  </p>
+                  </Link>
                 ))}
               </div>
             ))}
           </div>
-          <div>
+          <div className="hidden md:block">
             <Link href="/">
               <Image src="/logo-white.png" className="" alt="logo" width={100} height={100} />
             </Link>
           </div>
-          <div>
+          <div className="mt-6 md:mt-0">
             <div>
               <h1 className="mb-4 font-medium text-white">Social networks</h1>
               <div className="flex space-x-4">
@@ -89,7 +89,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 h-[1px] w-full bg-[#3A3A3A]" />
-        <div className="mt-8 flex space-x-6">
+        <div className="mt-8 flex justify-center space-x-6 md:justify-start">
           {footerLinks.map((link) => (
             <div key={link.label} className="mr-6">
               {link.href && (

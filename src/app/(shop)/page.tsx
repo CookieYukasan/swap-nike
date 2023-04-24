@@ -52,22 +52,22 @@ export default async function Home() {
 
   return (
     <main className="container mx-auto mt-8">
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-3xl font-bold text-[#1D1E20]">Nike Highlight</h1>
           <p className="mt-4 font-medium text-[#7C8089]">Nike most visited of the week</p>
         </div>
-        <div>
-          <h1 className="mb-4 font-medium text-[#1D1E20]">The next highlight will be on</h1>
+        <div className="mt-6 text-center md:mt-0 md:text-inherit">
+          <h1 className="mb-2 font-medium text-[#1D1E20] md:mb-4">The next highlight will be on</h1>
           <NextHighlightDate nextHighlightDate={nextHighlightDate} />
         </div>
       </div>
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {highlightsData.map((item) => (
           <SneakerCard key={item.id} data={item} />
         ))}
       </div>
-      <div className="mt-24 grid grid-cols-12">
+      <div className="mt-24 hidden grid-cols-12 md:grid">
         <div className="relative col-span-3">
           <Image src="/symbol.png" width={166} height={93} alt="Nike Symbol" className="absolute -top-12" />
           <Image
@@ -111,12 +111,12 @@ export default async function Home() {
         <h1 className="text-3xl font-bold text-[#1D1E20]">Exchanges available</h1>
         <p className="mt-4 font-medium text-[#7C8089]">Find your new love</p>
 
-        <div className="mt-8 grid grid-cols-4 gap-6">
+        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {exchangesData.map((item) => (
             <SneakerCard key={item.id} data={item} />
           ))}
         </div>
-        <button className="mx-auto mt-8 flex w-[420px] items-center justify-center rounded bg-black py-4 font-medium text-white">
+        <button className="mx-auto mt-8 flex w-full items-center justify-center rounded bg-black py-4 font-medium text-white md:w-[420px]">
           See more Nike <span className="material-symbols-outlined ml-2 text-white">arrow_forward</span>
         </button>
       </div>
@@ -124,7 +124,7 @@ export default async function Home() {
         <h1 className="text-3xl font-bold text-[#1D1E20]">What to expect from Swap Nike</h1>
         <p className="mt-4 font-medium text-[#7C8089]">Be surprised</p>
 
-        <div className="mt-6 grid grid-cols-2 grid-rows-2 gap-8">
+        <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2">
           {expectData.map((item) => (
             <div key={item.title} className="flex items-center">
               <span className="material-symbols-outlined !text-5xl">{item.iconName}</span>
@@ -136,7 +136,7 @@ export default async function Home() {
           ))}
         </div>
       </div>
-      <div className="mt-8 grid grid-cols-2 gap-6">
+      <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="relative rounded">
           <Image
             src="https://source.unsplash.com/random?nike"
