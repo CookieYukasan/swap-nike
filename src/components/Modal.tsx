@@ -4,7 +4,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { ReactNode } from 'react'
 
 type ModalProps = Dialog.DialogProps & {
-  trigger: JSX.Element
+  trigger: ReactNode
   children: ReactNode
   contentClassName?: string
 }

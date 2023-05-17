@@ -1,5 +1,5 @@
-export default function formatCurrency(balance: number): string {
-  return balance.toLocaleString('pt-BR', {
+export default function formatCurrency(number: number): string {
+  return number.toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL',
   })

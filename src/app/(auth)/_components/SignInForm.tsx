@@ -1,9 +1,10 @@
 'use client'
 
-import Link from 'next/link'
-import { z } from 'zod'
+import { Input } from '@/components/Input'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Link from 'next/link'
 import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const schema = z
   .object({
@@ -40,10 +41,10 @@ export function SignInForm() {
         <label className="text-[#677681]" htmlFor="email">
           Email
         </label>
-        <input
+        <Input
           {...register('email')}
+          hasError={!!errors?.email}
           id="email"
-          className="mt-2 w-full rounded border border-[#CFD9DE] p-4 transition-colors focus:border-zinc-600 focus:outline-none"
           autoComplete="off"
           type="email"
           placeholder="Email"
@@ -55,10 +56,10 @@ export function SignInForm() {
         <label className="text-[#677681]" htmlFor="password">
           Password
         </label>
-        <input
+        <Input
           {...register('password')}
+          hasError={!!errors?.password}
           id="password"
-          className="mt-2 w-full rounded border border-[#CFD9DE] p-4 transition-colors invalid:border-red-600 focus:border-zinc-600 focus:outline-none"
           autoComplete="off"
           type="Password"
           placeholder="Password"

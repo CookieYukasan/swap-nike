@@ -1,6 +1,6 @@
-import { SignUpForm } from '@/components/SignUpForm'
 import Image from 'next/image'
 import Link from 'next/link'
+import { SignUpForm } from '../_components/SignUpForm'
 
 export const metadata = {
   title: 'Swap Nike | Sign Up',

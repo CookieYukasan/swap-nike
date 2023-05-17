@@ -1,13 +1,14 @@
+import { Metadata } from 'next'
+import { Poppins } from 'next/font/google'
 import { ReactNode } from 'react'
 import './globals.css'
-import { Poppins } from 'next/font/google'
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     template: '%s | Swap Nike',
     default: 'Not Found | Swap Nike',

@@ -1,12 +1,12 @@
+import { SneakerProps } from '@/@types'
 import { NextHighlightDate } from '@/components/NextHighlightDate'
 import { SneakerCard } from '@/components/SneakerCard'
-import { SneakerProps } from '@/@types'
 import { fetchWrapper } from '@/utils/fetchWrapper'
-import Image from 'next/image'
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { FeedbackSwiper } from './_components/FeedbackSwiper'
 
-export const revalidate = 60
+export const revalidate = 10 // in seconds
 
 const expectData = [
   {
@@ -39,16 +39,26 @@ export const metadata: Metadata = {
   title: 'Home',
 }
 
+async function fetchData() {
+  const highlightsData = await fetchWrapper<SneakerProps[]>('/sneakers?limit=4', {
+    method: 'GET',
+  })
+
+  const exchangesData = await fetchWrapper<SneakerProps[]>('/sneakers?limit=8', {
+    method: 'GET',
+  })
+
+  return {
+    highlightsData,
+    exchangesData,
+  }
+}
+
 export default async function Home() {
-  const highlightsData = await fetchWrapper<SneakerProps[]>('/sneakers?_limit=4', {
-    method: 'GET',
-  })
+  const { exchangesData, highlightsData } = await fetchData()
 
-  const exchangesData = await fetchWrapper<SneakerProps[]>('/sneakers?_limit=8', {
-    method: 'GET',
-  })
-
-  const nextHighlightDate = new Date('2023-05-01')
+  const nextHighlightDate = new Date()
+  nextHighlightDate.setDate(nextHighlightDate.getDate() + 1)
 
   return (
     <main className="container mx-auto mt-8">

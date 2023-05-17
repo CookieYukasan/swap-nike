@@ -11,6 +11,14 @@ export type SneakerProps = {
   buyer?: UserProps
   currentBid?: number
   actionRemainingDate?: string
+  offers?: OfferProps[]
+}
+
+export type OfferProps = {
+  id: number
+  value: number
+  author: UserProps
+  createdAt: string
 }
 
 export type UserProps = {

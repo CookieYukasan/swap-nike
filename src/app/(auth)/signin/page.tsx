@@ -1,6 +1,6 @@
-import { SignInForm } from '@/components/SignInForm'
 import Image from 'next/image'
 import Link from 'next/link'
+import { SignInForm } from '../_components/SignInForm'
 
 export const metadata = {
   title: 'Swap Nike | Sign In',
