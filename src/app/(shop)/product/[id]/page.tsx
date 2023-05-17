@@ -16,12 +16,16 @@ type MetadataProps = {
 }
 
 async function getProduct(id: string) {
-  try{
-    return fetchWrapper<SneakerProps>(`/sneakers/${id}`, {
+  try {
+    const data = await fetchWrapper<SneakerProps>(`/sneakers/${id}`, {
       method: 'GET',
     })
+
+    if (!data.title) notFound()
+
+    return data
   } catch (error) {
-    console.log('sexo: ', error)
+    notFound()
   }
 }
 
@@ -29,8 +33,6 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
   const { id } = params
 
   const product = await getProduct(id)
-
-  if (!product) notFound()
 
   return {
     title: product.title,
@@ -58,7 +60,6 @@ export async function generateStaticParams() {
 
 export default async function Product({ params: { id } }: { params: { id: string } }) {
   const product = await getProduct(id)
-  if (!product) notFound()
 
   const userDisplay = product.buyer ? product.buyer : product.author
 
@@ -89,7 +90,9 @@ export default async function Product({ params: { id } }: { params: { id: string
         <div className="col-span-5">
           <h1 className="text-3xl font-bold text-[#1D1E20]">{product.title}</h1>
           <div className="mt-4 flex">
-            <span className="material-symbols-outlined text-black">{product.isAvailable ? 'check_circle' : 'cancel'}</span>
+            <span className="material-symbols-outlined text-black">
+              {product.isAvailable ? 'check_circle' : 'cancel'}
+            </span>
             <span className="ml-2 text-[#1D1E20]">{product.isAvailable ? 'Verified sale' : 'It is not for sale'}</span>
           </div>
           <div className="mt-6 flex items-center">
