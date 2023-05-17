@@ -11,6 +11,7 @@
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
     "@hookform/resolvers": "^3.1.0",
+    "@phosphor-icons/react": "^2.0.9",
     "@radix-ui/react-dialog": "^1.0.3",
     "@types/node": "18.15.12",
     "@types/react": "18.0.37",
@@ -31,8 +32,5 @@
   "devDependencies": {
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.7"
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }

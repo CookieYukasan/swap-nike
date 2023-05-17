@@ -1,9 +1,9 @@
 'use client'
 
-import Link from 'next/link'
-import { z } from 'zod'
+import { Input } from '@/components/Input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const schema = z
   .object({
@@ -53,14 +53,7 @@ export function SignUpForm() {
         <label className="text-[#677681]" htmlFor="email">
           Email
         </label>
-        <input
-          {...register('email')}
-          id="email"
-          className="mt-2 w-full rounded border border-[#CFD9DE] p-4 transition-colors focus:border-zinc-600 focus:outline-none"
-          autoComplete="off"
-          type="email"
-          placeholder="Email"
-        />
+        <Input {...register('email')} id="email" className="mt-2" autoComplete="off" type="email" placeholder="Email" />
         {errors?.email && <p className="mt-2 text-sm text-red-500">{errors.email.message}</p>}
       </div>
 
@@ -68,12 +61,12 @@ export function SignUpForm() {
         <label className="text-[#677681]" htmlFor="password">
           Password
         </label>
-        <input
+        <Input
           {...register('password')}
           id="password"
-          className="mt-2 w-full rounded border border-[#CFD9DE] p-4 transition-colors invalid:border-red-600 focus:border-zinc-600 focus:outline-none"
+          className="mt-2"
           autoComplete="off"
-          type="Password"
+          type="password"
           placeholder="Password"
         />
         {errors?.password && <p className="mt-2 text-sm text-red-500">{errors.password.message}</p>}
@@ -83,12 +76,12 @@ export function SignUpForm() {
         <label className="text-[#677681]" htmlFor="confirmPassword">
           Confirm password
         </label>
-        <input
+        <Input
           {...register('confirmPassword')}
           id="confirmPassword"
-          className="mt-2 w-full rounded border border-[#CFD9DE] p-4 transition-colors invalid:border-red-600 focus:border-zinc-600 focus:outline-none"
+          className="mt-2"
           autoComplete="off"
-          type="Password"
+          type="password"
           placeholder="Confirm password"
         />
         {errors?.confirmPassword && <p className="mt-2 text-sm text-red-500">{errors.confirmPassword.message}</p>}
@@ -110,7 +103,6 @@ export function SignUpForm() {
             className="bi bi-check pointer-events-none absolute -left-[2px] -top-[2px]"
             viewBox="0 0 15 15"
           >
-            {' '}
             <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />{' '}
           </svg>
         </div>

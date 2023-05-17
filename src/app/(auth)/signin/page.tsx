@@ -14,7 +14,7 @@ export default function SignIn() {
         <Image src="/logo.png" width={100} height={100} alt="Logo" />
       </Link>
       <h1 className="mt-6 text-3xl font-bold text-[#7C8089]">
-        Hi, Welcome to <strong className="text-[#1D1E20]">Swap Nike!</strong>
+        Hi, Welcome to <span className="font-bold text-[#1D1E20]">Swap Nike!</span>
       </h1>
       <p className="mt-2 font-medium text-[#7C8089]">Trade your Nike with other users</p>
       <button className="mt-6 flex w-full items-center rounded border border-[#CFD9DE] p-4 transition-colors hover:bg-zinc-100">

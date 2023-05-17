@@ -44,6 +44,7 @@ export function SignInForm() {
         <Input
           {...register('email')}
           hasError={!!errors?.email}
+          className="mt-2"
           id="email"
           autoComplete="off"
           type="email"
@@ -59,9 +60,10 @@ export function SignInForm() {
         <Input
           {...register('password')}
           hasError={!!errors?.password}
+          className="mt-2"
           id="password"
           autoComplete="off"
-          type="Password"
+          type="password"
           placeholder="Password"
         />
         {errors?.password && <p className="mt-2 text-sm text-red-500">{errors.password.message}</p>}
