@@ -1,15 +1,15 @@
 'use client'
 
+import { SneakerProps } from '@/@types'
+import { limitString } from '@/utils/limitString'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ChangeEvent, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Modal } from '../Modal'
-import { SneakerProps } from '@/@types'
-import Link from 'next/link'
-import { limitString } from '@/utils/limitString'
 
 const schema = z
   .object({
@@ -37,7 +37,6 @@ const sneakerData: SneakerProps[] = [
     author: {
       id: 905168613649,
       userName: 'Alessandra79',
-      email: 'Jodie_Welch82@yahoo.com',
       avatar: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/917.jpg',
     },
     isFavorite: true,
@@ -61,7 +60,6 @@ const sneakerData: SneakerProps[] = [
     author: {
       id: 905168613649,
       userName: 'Alessandra79',
-      email: 'Jodie_Welch82@yahoo.com',
       avatar: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/917.jpg',
     },
     isFavorite: true,
@@ -85,7 +83,6 @@ const sneakerData: SneakerProps[] = [
     author: {
       id: 905168613649,
       userName: 'Alessandra79',
-      email: 'Jodie_Welch82@yahoo.com',
       avatar: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/917.jpg',
     },
     isFavorite: true,
