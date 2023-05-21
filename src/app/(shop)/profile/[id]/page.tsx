@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
       images: [
         {
           url: 'https://spaceshipws.vercel.app/web/images/team/adson-martins.jpg',
-          width: 800,
-          height: 600,
+          width: 128,
+          height: 128,
           alt: 'Foto de Adson Martins',
         },
       ],
