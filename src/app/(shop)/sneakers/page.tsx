@@ -1,11 +1,7 @@
-import { SneakerProps } from '@/@types'
 import { AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger } from '@/components/Accordion'
-import { useSneakersStore } from '@/store/useSneakersStore'
-import { fetchWrapper } from '@/utils/fetchWrapper'
 import { SizeFilter } from './_components/Filters'
 import { SneakersGrid } from './_components/SneakersGrid'
 import { ViewMoreButton } from './_components/ViewMoreButton'
-import { InitializerStore } from './_initializerStore'
 
 export const metadata = {
   title: 'All Sneakers',
@@ -31,12 +27,12 @@ const accordionItems = [
 ]
 
 export default async function SneakersPage() {
-  const sneakersData = await fetchWrapper<SneakerProps[]>('/sneakers?limit=9', { method: 'GET' })
-  useSneakersStore.setState({ sneakers: sneakersData })
+  // const sneakersData = await fetchWrapper<SneakerProps[]>('/sneakers?limit=9', { method: 'GET' })
+  // useSneakersStore.setState({ sneakers: sneakersData })
 
   return (
     <>
-      <InitializerStore sneakers={sneakersData ?? []} />
+      {/* <InitializerStore sneakers={sneakersData ?? []} /> */}
 
       <main className="container mx-auto">
         <div className="mt-8 grid grid-cols-12">
