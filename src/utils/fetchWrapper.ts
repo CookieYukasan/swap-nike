@@ -2,5 +2,5 @@ export async function fetchWrapper<T = unknown>(input: RequestInfo | URL, init?:
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${input}`, init)
   const result = await response.json()
   
-  return result as T
+  return result.data ? result.data as T : result as T
 }
