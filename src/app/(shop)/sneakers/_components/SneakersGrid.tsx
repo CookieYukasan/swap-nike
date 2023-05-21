@@ -8,9 +8,7 @@ export function SneakersGrid() {
 
   return (
     <div className="grid w-full grid-cols-3 gap-6">
-      {sneakers.map((sneaker) => (
-        <SneakerCard key={sneaker.id} data={sneaker} />
-      ))}
+      {sneakers && sneakers.length && sneakers.map((sneaker) => <SneakerCard key={sneaker.id} data={sneaker} />)}
     </div>
   )
 }

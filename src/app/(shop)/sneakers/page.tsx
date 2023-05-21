@@ -52,7 +52,6 @@ export default async function SneakersPage() {
                   </AccordionItem>
                 ))}
               </AccordionRoot>
-              {/* <h2 className="mb-6 text-xl font-bold">Brands</h2> */}
             </div>
           </div>
 
