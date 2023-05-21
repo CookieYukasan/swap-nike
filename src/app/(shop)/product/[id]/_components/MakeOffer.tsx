@@ -1,6 +1,6 @@
 'use client'
 
-import { MaskInput } from '@/components/Input'
+import { MaskCurrencyInput } from '@/components/Input'
 import { LoadingSpinner } from '@/components/LoadingSpinner'
 import { Modal } from '@/components/Modal'
 import { delay } from '@/utils/delay'
@@ -19,8 +19,8 @@ const schema = z.object({
         return { message: 'Please enter a valid amount.' }
       },
     })
-    .min(1)
-    .max(userBalance, `You don't have enough balance.`),
+    // .refine((value) => value > 0, { message: 'Please enter a valid amount.' })
+    .refine((value) => value <= userBalance, { message: `You don't have enough balance.` }),
 })
 
 type FormProps = z.infer<typeof schema>
@@ -29,11 +29,10 @@ export default function MakeOffer({ children }: { children: ReactNode }) {
   const {
     register,
     handleSubmit,
-    watch,
+    setValue,
     formState: { errors },
   } = useForm<FormProps>({
-    mode: 'all',
-    criteriaMode: 'all',
+    mode: 'onChange',
     resolver: zodResolver(schema),
   })
   const [isLoaded, setIsLoaded] = useState(false)
@@ -56,26 +55,14 @@ export default function MakeOffer({ children }: { children: ReactNode }) {
         <label className="text-[#677681]" htmlFor="amount">
           Amount
         </label>
-        {/** TODO: make this input mask currency */}
-        {/* <input
+        <MaskCurrencyInput
           {...register('amount', {
-            setValueAs: (value) => Number(value),
+            valueAsNumber: true,
           })}
-          id="amount"
-          className="mt-2 w-full rounded border border-[#CFD9DE] p-4 transition-colors invalid:border-red-600 focus:border-zinc-600 focus:outline-none"
-          autoComplete="off"
-          type="number"
+          className="mt-2"
           placeholder="Enter amount"
-        /> */}
-        <MaskInput
-          mask={formatCurrency}
-          type="number"
-          id="amount"
-          autoComplete="off"
-          placeholder="Enter amount"
-          {...register('amount', {
-            setValueAs: (value) => Number(value),
-          })}
+          onValueChange={(_, __, values) => setValue('amount', Number(values?.float))}
+          allowNegativeValue={false}
         />
         {errors?.amount && (
           <div className="mt-2 flex items-center justify-between">

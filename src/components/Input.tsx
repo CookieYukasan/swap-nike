@@ -3,6 +3,7 @@
 import { cn } from '@/utils/classNames'
 import { Eye, EyeSlash } from '@phosphor-icons/react'
 import React, { forwardRef, useState } from 'react'
+import CurrencyInput, { CurrencyInputProps } from 'react-currency-input-field'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean
@@ -40,18 +41,34 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({ type, className
   )
 })
 
-interface MaskInputProps extends InputProps {
-  mask: (value: number) => string
+interface MaskCurrencyInputProps extends CurrencyInputProps {
+  hasError?: boolean
 }
 
-export const MaskInput = forwardRef<HTMLInputElement, MaskInputProps>(({ mask, ...props }, ref) => {
-  return (
-    <Input
-      onChange={(e) => {
-        e.target.value = mask(Number(e.target.value))
-      }}
-      ref={ref}
-      {...props}
-    />
-  )
-})
+export const MaskCurrencyInput = forwardRef<HTMLInputElement, MaskCurrencyInputProps>(
+  ({ className, hasError, ...props }, ref) => {
+    return (
+      <div
+        className={cn(
+          className,
+          'flex h-14 items-center justify-between rounded ring-1 ring-[#CFD9DE] transition-colors',
+          'focus-within:ring-zinc-600',
+          {
+            'ring-red-600': hasError,
+          },
+        )}
+      >
+        <CurrencyInput
+          fixedDecimalLength={2}
+          decimalsLimit={2}
+          prefix="R$ "
+          decimalSeparator=","
+          groupSeparator="."
+          className={cn('h-full w-full bg-transparent px-4 outline-none')}
+          ref={ref}
+          {...props}
+        />
+      </div>
+    )
+  },
+)

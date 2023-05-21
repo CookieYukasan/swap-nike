@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { SignInForm } from '../_components/SignInForm'
 
 export const metadata = {
-  title: 'Swap Nike | Sign In',
+  title: 'Sign In',
   description: 'Sign in to Swap Nike and start trading your Nike with other users',
 }
 

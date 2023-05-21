@@ -1,5 +1,6 @@
 import { SneakerProps } from '@/@types'
 import Link from 'next/link'
+import { SneakerCardImage } from './CardImage'
 
 export function SneakerCard({ data }: { data: SneakerProps }) {
   const { id, title, date, images } = data
@@ -11,9 +12,10 @@ export function SneakerCard({ data }: { data: SneakerProps }) {
   })
 
   return (
-    <div className="rounded-lg border border-[#CFD9DE] transition-transform duration-300 hover:-translate-y-2 hover:translate-x-2">
+    <div className="rounded border border-[#CFD9DE] transition-transform duration-300 hover:-translate-y-2 hover:translate-x-2">
       <Link href={`/product/${id}`}>
-        <img src={images[0]} alt="Sneaker" className="h-[350px] w-full rounded-t object-cover" />
+        <SneakerCardImage src={images[0]} alt="Sneaker Image" />
+        {/* <img src={images[0]} alt="Sneaker" className="h-[350px] w-full rounded-t object-cover" /> */}
       </Link>
       <div className="p-4">
         <h1 className="font-medium text-[#1D1E20]">{title}</h1>

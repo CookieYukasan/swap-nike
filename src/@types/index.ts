@@ -1,5 +1,5 @@
 export type SneakerProps = {
-  id: number
+  id: number | string
   title: string
   date: string
   images: string[]
@@ -18,12 +18,12 @@ export type OfferProps = {
   id: number
   value: number
   author: UserProps
+  authorId: number | string
   createdAt: string
 }
 
 export type UserProps = {
   id: number
   userName: string
-  email: string
   avatar: string
 }

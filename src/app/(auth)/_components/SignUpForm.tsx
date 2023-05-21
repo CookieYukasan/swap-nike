@@ -1,5 +1,6 @@
 'use client'
 
+import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -116,7 +117,7 @@ export function SignUpForm() {
       </div>
       {errors?.agreeTerms && <p className="mt-2 text-sm text-red-500">{errors.agreeTerms.message}</p>}
 
-      <button className="mt-6 w-full rounded bg-black py-4 text-white">Sign up</button>
+      <Button className="mt-6">Sign up</Button>
     </form>
   )
 }

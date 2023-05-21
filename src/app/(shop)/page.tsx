@@ -1,12 +1,14 @@
 import { SneakerProps } from '@/@types'
+import { Button } from '@/components/Button'
 import { NextHighlightDate } from '@/components/NextHighlightDate'
 import { SneakerCard } from '@/components/SneakerCard'
 import { fetchWrapper } from '@/utils/fetchWrapper'
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FeedbackSwiper } from './_components/FeedbackSwiper'
 
-export const revalidate = 10 // in seconds
+export const revalidate = 60 // in seconds
 
 const expectData = [
   {
@@ -117,9 +119,13 @@ export default async function Home() {
             <SneakerCard key={item.id} data={item} />
           ))}
         </div>
-        <button className="mx-auto mt-8 flex w-full items-center justify-center rounded bg-black py-4 font-medium text-white md:w-[420px]">
-          See more Nike <span className="material-symbols-outlined ml-2 text-white">arrow_forward</span>
-        </button>
+        <div className="mx-auto mt-8 max-w-md">
+          <Link href="/sneakers">
+            <Button>
+              See more Nike <span className="material-symbols-outlined ml-2 text-white">arrow_forward</span>
+            </Button>
+          </Link>
+        </div>
       </div>
       <div className="mt-8">
         <h1 className="text-3xl font-bold text-[#1D1E20]">What to expect from Swap Nike</h1>
