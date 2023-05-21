@@ -13,6 +13,16 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
   return {
     title: 'Adson Martins',
     description: `Perfil do usuário: ${id}`,
+    openGraph: {
+      images: [
+        {
+          url: 'https://spaceshipws.vercel.app/web/images/team/adson-martins.jpg',
+          width: 800,
+          height: 600,
+          alt: 'Foto de Adson Martins',
+        },
+      ],
+    },
   }
 }
 
